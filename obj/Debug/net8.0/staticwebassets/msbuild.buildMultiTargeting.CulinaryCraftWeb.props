@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="..\build\CulinaryCraftWeb.props" />
+  <Import Project="../build/CulinaryCraftWeb.props" />
 </Project>

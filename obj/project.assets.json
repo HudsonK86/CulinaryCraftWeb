@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "/Users/hudsonnguyen/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb.csproj",
+      "projectUniqueName": "/Users/hudsonnguyen/Documents/Sem4/WebAPP/CulinaryCraftWeb/CulinaryCraftWeb.csproj",
       "projectName": "CulinaryCraftWeb",
-      "projectPath": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\obj\\",
+      "projectPath": "/Users/hudsonnguyen/Documents/Sem4/WebAPP/CulinaryCraftWeb/CulinaryCraftWeb.csproj",
+      "packagesPath": "/Users/hudsonnguyen/.nuget/packages/",
+      "outputPath": "/Users/hudsonnguyen/Documents/Sem4/WebAPP/CulinaryCraftWeb/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/hudsonnguyen/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -67,7 +67,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.408/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.408/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
