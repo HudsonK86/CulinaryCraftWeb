@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/hudsonnguyen/Documents/Sem4/WebAPP/CulinaryCraftWeb/CulinaryCraftWeb.csproj": {}
+    "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\CulinaryCraftWeb.csproj": {}
   },
   "projects": {
-    "/Users/hudsonnguyen/Documents/Sem4/WebAPP/CulinaryCraftWeb/CulinaryCraftWeb.csproj": {
+    "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\CulinaryCraftWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/hudsonnguyen/Documents/Sem4/WebAPP/CulinaryCraftWeb/CulinaryCraftWeb.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\CulinaryCraftWeb.csproj",
         "projectName": "CulinaryCraftWeb",
-        "projectPath": "/Users/hudsonnguyen/Documents/Sem4/WebAPP/CulinaryCraftWeb/CulinaryCraftWeb.csproj",
-        "packagesPath": "/Users/hudsonnguyen/.nuget/packages/",
-        "outputPath": "/Users/hudsonnguyen/Documents/Sem4/WebAPP/CulinaryCraftWeb/obj/",
+        "projectPath": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\CulinaryCraftWeb.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/hudsonnguyen/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -61,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.408/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.408/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
