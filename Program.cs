@@ -1,7 +1,29 @@
+using CulinaryCraftWeb.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Load environment variables into configuration
 builder.Configuration.AddEnvironmentVariables();
+
+// Read environment variables for DB_USER and DB_PASSWORD
+var dbUser = Environment.GetEnvironmentVariable("DB_USER");
+var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
+
+// Check if the environment variables are null
+if (string.IsNullOrEmpty(dbUser) || string.IsNullOrEmpty(dbPassword))
+{
+    throw new InvalidOperationException("Database credentials are not set in the environment variables.");
+}
+
+// Build the connection string dynamically
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+    .Replace("{DB_USER}", dbUser)
+    .Replace("{DB_PASSWORD}", dbPassword);
+
+// Register the database context
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

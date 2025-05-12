@@ -9,9 +9,9 @@
             <h1 class="display-4 fw-bold">Share Your Recipes<br />and Inspire Others</h1>
             <p class="lead">Join our community of food enthusiasts. Share your favorite recipes and discover new ones!</p>
             <a href="/Recipes/Create" class="btn btn-primary">Post a Recipe</a>
-        </div>
+        </div>    
         <div class="col-md-6">
-            <img src="~/Images/Logo.png" class="img-fluid" alt="Logo" />
+            <img src="~/Images/Logo.png" class="img-fluid rounded" alt="Logo" />
         </div>
     </div>
 
@@ -19,55 +19,67 @@
     <h2 class="mb-4">Explore by Cuisine</h2>
     <div class="row g-4">
         <div class="col-md-4">
-            <div class="course-card text-center p-3 h-100">
-                <img src="~/Images/Western.png" class="img-fluid rounded mb-3" alt="Western Cuisine" />
-                <h5>Western</h5>
-                <a href="/Recipes?cuisine=Western" class="btn btn-outline-primary mt-2">View Recipes</a>
+            <div class="card-style text-center">
+                <img src="~/Images/Western.png" alt="Western Cuisine" />
+                <div class="card-body">
+                    <h5 class="card-title">Western</h5>
+                    <a href="/Recipes?cuisine=Western" class="btn btn-outline-primary">View Recipes</a>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="course-card text-center p-3 h-100">
-                <img src="~/Images/Chinese.png" class="img-fluid rounded mb-3" alt="Chinese Cuisine" />
-                <h5>Chinese</h5>
-                <a href="/Recipes?cuisine=Chinese" class="btn btn-outline-primary mt-2">View Recipes</a>
+            <div class="card-style text-center">
+                <img src="~/Images/Chinese.png" alt="Chinese Cuisine" />
+                <div class="card-body">
+                    <h5 class="card-title">Chinese</h5>
+                    <a href="/Recipes?cuisine=Chinese" class="btn btn-outline-primary">View Recipes</a>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="course-card text-center p-3 h-100">
-                <img src="~/Images/Japanese.png" class="img-fluid rounded mb-3" alt="Japanese Cuisine" />
-                <h5>Japanese</h5>
-                <a href="/Recipes?cuisine=Japanese" class="btn btn-outline-primary mt-2">View Recipes</a>
+            <div class="card-style text-center">
+                <img src="~/Images/Japanese.png" alt="Japanese Cuisine" />
+                <div class="card-body">
+                    <h5 class="card-title">Japanese</h5>
+                    <a href="/Recipes?cuisine=Japanese" class="btn btn-outline-primary">View Recipes</a>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="course-card text-center p-3 h-100">
-                <img src="~/Images/Indian.png" class="img-fluid rounded mb-3" alt="Indian Cuisine" />
-                <h5>Indian</h5>
-                <a href="/Recipes?cuisine=Indian" class="btn btn-outline-primary mt-2">View Recipes</a>
+            <div class="card-style text-center">
+                <img src="~/Images/Indian.png" alt="Indian Cuisine" />
+                <div class="card-body">
+                    <h5 class="card-title">Indian</h5>
+                    <a href="/Recipes?cuisine=Indian" class="btn btn-outline-primary">View Recipes</a>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="course-card text-center p-3 h-100">
-                <img src="~/Images/MiddleEast.png" class="img-fluid rounded mb-3" alt="MiddleEast Cuisine" />
-                <h5>Middle East</h5>
-                <a href="/Recipes?cuisine=MiddleEast" class="btn btn-outline-primary mt-2">View Recipes</a>
+            <div class="card-style text-center">
+                <img src="~/Images/MiddleEast.png" alt="MiddleEast Cuisine" />
+                <div class="card-body">
+                    <h5 class="card-title">Middle East</h5>
+                    <a href="/Recipes?cuisine=MiddleEast" class="btn btn-outline-primary">View Recipes</a>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="course-card text-center p-3 h-100">
-                <img src="~/Images/Vietnamese.png" class="img-fluid rounded mb-3" alt="Vietnamese Cuisine" />
-                <h5>Vietnamese</h5>
-                <a href="/Recipes?cuisine=Vietnamese" class="btn btn-outline-primary mt-2">View Recipes</a>
+            <div class="card-style text-center">
+                <img src="~/Images/Vietnamese.png" alt="Vietnamese Cuisine" />
+                <div class="card-body">
+                    <h5 class="card-title">Vietnamese</h5>
+                    <a href="/Recipes?cuisine=Vietnamese" class="btn btn-outline-primary">View Recipes</a>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Featured Recipes Section -->
-    <div class="row mt-5">
-        <h2 class="mb-4">Featured Recipes</h2>
+    <h2 class="mb-4">Featured Recipes</h2>
+    <div class="row g-4">
         <div class="col-md-4">
-            <div class="card">
-                <img src="~/Images/Vietnamese.png" class="card-img-top" alt="Vietnamese Pho" />
+            <div class="card-style text-center">
+                <img src="~/Images/Vietnamese.png" alt="Vietnamese Pho" />
                 <div class="card-body">
                     <h5 class="card-title">Vietnamese Pho</h5>
                     <p class="card-text">A traditional Vietnamese soup made with a clear broth, rice noodles, and a variety of vegetables and herbs.</p>
@@ -76,8 +88,8 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card">
-                <img src="~/Images/ClassicSpaghetti.png" class="card-img-top" alt="Classic Spaghetti" />
+            <div class="card-style text-center">
+                <img src="~/Images/ClassicSpaghetti.png" alt="Classic Spaghetti" />
                 <div class="card-body">
                     <h5 class="card-title">Classic Spaghetti</h5>
                     <p class="card-text">A classic Italian dish made with a tomato-based sauce, spaghetti, and various toppings.</p>
@@ -86,8 +98,8 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card">
-                <img src="~/Images/BeefStirFry.png" class="card-img-top" alt="Beef Stir Fry" />
+            <div class="card-style text-center">
+                <img src="~/Images/BeefStirFry.png" alt="Beef Stir Fry" />
                 <div class="card-body">
                     <h5 class="card-title">Beef Stir Fry</h5>
                     <p class="card-text">A quick and easy stir-fry made with beef, vegetables, and a savory sauce.</p>
