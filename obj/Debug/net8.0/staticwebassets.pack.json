@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\Images\\Japanese.png"
     },
     {
+      "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\Logo.png",
+      "PackagePath": "staticwebassets\\Images\\Logo.png"
+    },
+    {
       "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\MiddleEast.png",
       "PackagePath": "staticwebassets\\Images\\MiddleEast.png"
     },

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ab82gsdmiyOsJNP2cWrBybERpVGfaUSWhkNE0xDxuiE=",
+  "Hash": "D5jsJ3D/XpszWj4p8CW5iHdqfvZ9z7h5VA0+BipWzIM=",
   "Source": "CulinaryCraftWeb",
   "BasePath": "_content/CulinaryCraftWeb",
   "Mode": "Default",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\Japanese.png"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\Logo.png",
+      "SourceId": "CulinaryCraftWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\",
+      "BasePath": "_content/CulinaryCraftWeb",
+      "RelativePath": "Images/Logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Logo.png"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\MiddleEast.png",
