@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4aBYoVm1GCr6Z2OhuHBuVTi2PWYpFPFukpUzTFB1IBM=",
+  "Hash": "rB7urs3StCnd5zBmW2NwO3ZbJKKFH7kSgO2dCBC06Lc=",
   "Source": "CulinaryCraftWeb",
   "BasePath": "_content/CulinaryCraftWeb",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/Images/Chinese.png"
+    },
+    {
+      "Identity": "/Users/hudsonnguyen/Documents/Sem4/WebAPP/CulinaryCraftWeb/wwwroot/Images/default-profile.jpg",
+      "SourceId": "CulinaryCraftWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/hudsonnguyen/Documents/Sem4/WebAPP/CulinaryCraftWeb/wwwroot/",
+      "BasePath": "_content/CulinaryCraftWeb",
+      "RelativePath": "Images/default-profile.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Images/default-profile.jpg"
     },
     {
       "Identity": "/Users/hudsonnguyen/Documents/Sem4/WebAPP/CulinaryCraftWeb/wwwroot/Images/Indian.png",

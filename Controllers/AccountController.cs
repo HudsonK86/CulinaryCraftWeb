@@ -24,9 +24,17 @@ namespace CulinaryCraftWeb.Controllers
         [HttpPost]
         public IActionResult Login(string userId, string password)
         {
-            // TODO: Add authentication logic here
-            if (userId == "admin" && password == "password") // Example logic
+            var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+
+            if (user != null && BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
             {
+                // Check if the user has a profile image; if not, use the default image
+                TempData["UserName"] = user.Name;
+                TempData["ProfileImage"] = string.IsNullOrEmpty(user.ProfileImage) 
+                    ? "/Images/default-profile.jpg" 
+                    : user.ProfileImage;
+
+                // Redirect to Home page after successful login
                 return RedirectToAction("Index", "Home");
             }
 
@@ -66,7 +74,7 @@ namespace CulinaryCraftWeb.Controllers
                     Name = model.Name,
                     Email = model.Email,
                     PasswordHash = BCrypt.Net.BCrypt.HashPassword(model.Password), // Hash the password
-                    ProfileImage = "none", // Default value
+                    ProfileImage = null, // Default profile image
                     RegisteredDate = DateTime.Now,
                     Status = "active",
                     Role = "user"
@@ -74,6 +82,9 @@ namespace CulinaryCraftWeb.Controllers
 
                 _context.Users.Add(user);
                 _context.SaveChanges();
+
+                // Set success message
+                TempData["SuccessMessage"] = "Your account has been created successfully.";
 
                 // Redirect to the login page
                 return RedirectToAction("Login");
@@ -96,14 +107,26 @@ namespace CulinaryCraftWeb.Controllers
                 return View(model);
             }
 
+            // Check if the new password and confirm password match
             if (model.NewPassword != model.ConfirmPassword)
             {
                 ModelState.AddModelError("ConfirmPassword", "Passwords do not match.");
                 return View(model);
             }
 
-            // TODO: Add logic to verify the User ID and email, and update the password in the database.
+            // Verify if the user ID and email match a user in the database
+            var user = _context.Users.FirstOrDefault(u => u.Id == model.UserId && u.Email == model.Email);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Invalid User ID or Email.");
+                return View(model);
+            }
 
+            // Update the user's password
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(model.NewPassword);
+            _context.SaveChanges();
+
+            // Set success message and redirect to login page
             TempData["SuccessMessage"] = "Your password has been reset successfully.";
             return RedirectToAction("Login");
         }

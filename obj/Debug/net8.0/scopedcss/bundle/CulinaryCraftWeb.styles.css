@@ -47,3 +47,8 @@ button.accept-policy[b-7x26j5w1nm] {
   white-space: nowrap;
   line-height: 60px;
 }
+
+.rounded-circle[b-7x26j5w1nm] {
+    border-radius: 50%;
+    object-fit: cover;
+}

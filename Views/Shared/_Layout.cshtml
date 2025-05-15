@@ -29,7 +29,17 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                         </li>
                         <li class="nav-item ms-auto">
-                            <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
+                            @if (TempData["UserName"] != null)
+                            {
+                                <div class="d-flex align-items-center">
+                                    <img src="@TempData["ProfileImage"]" alt="Profile" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;" />
+                                    <span class="ms-2">@TempData["UserName"]</span>
+                                </div>
+                            }
+                            else
+                            {
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
+                            }
                         </li>
                     </ul>
                 </div>

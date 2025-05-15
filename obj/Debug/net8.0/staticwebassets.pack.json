@@ -37,6 +37,10 @@
       "PackagePath": "staticwebassets/Images/Western.png"
     },
     {
+      "Id": "/Users/hudsonnguyen/Documents/Sem4/WebAPP/CulinaryCraftWeb/wwwroot/Images/default-profile.jpg",
+      "PackagePath": "staticwebassets/Images/default-profile.jpg"
+    },
+    {
       "Id": "/Users/hudsonnguyen/Documents/Sem4/WebAPP/CulinaryCraftWeb/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },
