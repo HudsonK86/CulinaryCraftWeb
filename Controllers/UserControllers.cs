@@ -50,10 +50,13 @@ namespace CulinaryCraftWeb.Controllers
 
         public IActionResult MyRecipes()
         {
-            // Query recipes for the current user and pass to view
-            var userId = /* get current user id from session or TempData */;
-            var recipes = _context.Recipes.Where(r => r.UserId == userId).ToList();
-            return View(recipes);
+            // Load user's recipes
+            return View();
+        }
+
+        public IActionResult SomeAction()
+        {
+            return View();
         }
     }
 }
