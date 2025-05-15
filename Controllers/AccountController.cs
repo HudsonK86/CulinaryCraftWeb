@@ -34,6 +34,9 @@ namespace CulinaryCraftWeb.Controllers
                     ? "/Images/default-profile.jpg" 
                     : user.ProfileImage;
 
+                // Set success message for login
+                TempData["SuccessMessage"] = "Login successful! Welcome, " + user.Name + ".";
+
                 // Redirect to Home page after successful login
                 return RedirectToAction("Index", "Home");
             }

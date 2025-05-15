@@ -29,11 +29,33 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                         </li>
                         <li class="nav-item ms-auto">
-                            @if (TempData["UserName"] != null)
+                            @{
+                                var userName = TempData["UserName"] as string;
+                                var profileImage = TempData["ProfileImage"] as string ?? "/Images/default-profile.jpg";
+                                var userRole = TempData["UserRole"] as string ?? "user";
+                            }
+                            @if (!string.IsNullOrEmpty(userName))
                             {
-                                <div class="d-flex align-items-center">
-                                    <img src="@TempData["ProfileImage"]" alt="Profile" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;" />
-                                    <span class="ms-2">@TempData["UserName"]</span>
+                                <div class="dropdown">
+                                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="@profileImage" alt="Profile" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;" />
+                                        <span class="ms-2">@userName</span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                                        @if (userRole == "admin")
+                                        {
+                                            <li><a class="dropdown-item" asp-controller="Admin" asp-action="ManageUsers">Manage Users</a></li>
+                                            <li><a class="dropdown-item" asp-controller="Admin" asp-action="ManageRecipes">Manage Recipes</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li><a class="dropdown-item" asp-controller="User" asp-action="Dashboard">Dashboard</a></li>
+                                            <li><a class="dropdown-item" asp-controller="User" asp-action="AccountSettings">Account Settings</a></li>
+                                            <li><a class="dropdown-item" asp-controller="User" asp-action="MyRecipes">My Recipes</a></li>
+                                        }
+                                        <li><hr class="dropdown-divider" /></li>
+                                        <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Logout</a></li>
+                                    </ul>
                                 </div>
                             }
                             else
@@ -47,6 +69,16 @@
         </nav>
     </header>
     <div class="container">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="alert alert-success text-center mt-4" role="alert">
+                        @TempData["SuccessMessage"]
+                    </div>
+                </div>
+            </div>
+        }
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
