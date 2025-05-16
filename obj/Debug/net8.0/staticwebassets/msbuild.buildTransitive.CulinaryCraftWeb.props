@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/CulinaryCraftWeb.props" />
+</Project>

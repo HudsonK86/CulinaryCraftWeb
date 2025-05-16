@@ -42,12 +42,8 @@ namespace CulinaryCraftWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult AccountSettings()
-        {
-            // Update name, password, profile picture logic here
-            return View(model);
-        }
-
+        
+        
         public IActionResult MyRecipes()
         {
             // Load user's recipes

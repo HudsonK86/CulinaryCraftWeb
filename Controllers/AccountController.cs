@@ -133,5 +133,16 @@ namespace CulinaryCraftWeb.Controllers
             TempData["SuccessMessage"] = "Your password has been reset successfully.";
             return RedirectToAction("Login");
         }
+
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            // Clear TempData and any session/cookie if used
+            TempData.Clear();
+            // Optionally, clear authentication cookies or session here
+
+            TempData["SuccessMessage"] = "You have been logged out successfully.";
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
