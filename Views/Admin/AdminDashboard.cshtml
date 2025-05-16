@@ -1,6 +1,25 @@
 @{
     ViewData["Title"] = "Admin Dashboard";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
+
+@section SidebarMenu {
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Admin" asp-action="ManageAccounts">Manage Accounts</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Admin" asp-action="ManageRecipes">Manage Recipes</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Admin" asp-action="ManageComments">Manage Comments</a>
+    </li>
+    <li class="nav-item mt-3">
+        <a class="nav-link text-danger" asp-controller="Account" asp-action="Logout">Logout</a>
+    </li>
+}
+
+<h2>@ViewData["Title"]</h2>
+<p>Welcome to the Admin Dashboard. Select a function from the left.</p>
 
 <div class="container py-5">
     <div class="row justify-content-center mb-4">

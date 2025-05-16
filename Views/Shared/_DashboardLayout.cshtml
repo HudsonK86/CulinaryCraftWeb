@@ -1,0 +1,29 @@
+@* Shared dashboard layout *@
+@{
+    Layout = "_Layout";
+    var profileImage = User.FindFirst("ProfileImage")?.Value ?? "default-profile.jpg";
+    if (!profileImage.StartsWith("/") && !profileImage.StartsWith("http"))
+    {
+        profileImage = "/Images/" + profileImage;
+    }
+}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar py-4">
+            <div class="sidebar-sticky">
+                <div class="text-center mb-4">
+                    <img src="@profileImage" alt="Profile" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;" />
+                </div>
+                <ul class="nav flex-column">
+                    @RenderSection("SidebarMenu", required: false)
+                </ul>
+            </div>
+        </nav>
+        <!-- Main Content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+            @RenderBody()
+        </main>
+    </div>
+</div>
+@await RenderSectionAsync("Scripts", required: false)

@@ -1,0 +1,14 @@
+@model object
+
+@if (ViewBag.SuccessMessage != null)
+{
+    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+}
+
+<h3>Change Profile Image</h3>
+<form id="profileImageForm" asp-action="ChangeProfileImage" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <input type="file" class="form-control" id="profileImage" name="profileImage" accept="image/*" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>

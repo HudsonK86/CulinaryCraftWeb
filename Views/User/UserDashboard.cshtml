@@ -1,44 +1,35 @@
 @{
     ViewData["Title"] = "User Dashboard";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
-<div class="container py-5">
-    <div class="row justify-content-center mb-4">
-        <div class="col-md-8 text-center">
-            <h1 class="display-5 fw-bold">User Dashboard</h1>
-            <p class="lead">Manage your profile and activities</p>
-        </div>
-    </div>
-    <div class="row g-4">
-        <div class="col-md-3">
-            <div class="card-style text-center p-4">
-                <img src="~/Images/default-profile.jpg" alt="Profile" class="rounded-circle mb-3" style="width: 100px; height: 100px;" />
-                <h5 class="card-title mb-3">Change Profile Image</h5>
-                <a asp-controller="User" asp-action="ChangeProfileImage" class="btn btn-outline-primary w-100">Change</a>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card-style text-center p-4">
-                <h5 class="card-title mb-3">Change Password</h5>
-                <a asp-controller="User" asp-action="ChangePassword" class="btn btn-outline-primary w-100">Change</a>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card-style text-center p-4">
-                <h5 class="card-title mb-3">My Recipes</h5>
-                <a asp-controller="Recipes" asp-action="MyRecipes" class="btn btn-outline-primary w-100">View</a>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card-style text-center p-4">
-                <h5 class="card-title mb-3">Activities</h5>
-                <a asp-controller="User" asp-action="Activities" class="btn btn-outline-primary w-100">View</a>
-            </div>
-        </div>
-    </div>
-    <div class="row justify-content-center mt-4">
-        <div class="col-md-4 text-center">
-            <a asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)" class="btn btn-danger w-100">Logout</a>
-        </div>
-    </div>
+@section SidebarMenu {
+    <li class="nav-item">
+        <a class="nav-link" href="#" onclick="loadDashboardContent('@Url.Action("ChangeProfileImage", "User")'); return false;">Change Profile Image</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#" onclick="loadDashboardContent('@Url.Action("ChangePassword", "User")'); return false;">Change Password</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#" onclick="loadDashboardContent('@Url.Action("MyRecipes", "Recipes")'); return false;">My Recipes</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#" onclick="loadDashboardContent('@Url.Action("Activities", "User")'); return false;">Activities</a>
+    </li>
+    <li class="nav-item mt-3">
+        <a class="nav-link text-danger" asp-controller="Account" asp-action="Logout">Logout</a>
+    </li>
+}
+
+
+<div id="dashboard-content">
+    @await Html.PartialAsync("ChangeProfileImagePartial")
 </div>
+
+@section Scripts {
+    <script>
+        function loadDashboardContent(url) {
+            $("#dashboard-content").load(url);
+        }
+    </script>
+}
