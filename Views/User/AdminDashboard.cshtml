@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-8 text-center">
+            <h1 class="display-5 fw-bold">Admin Dashboard</h1>
+            <p class="lead">Manage the platform</p>
+        </div>
+    </div>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card-style text-center p-4">
+                <h5 class="card-title mb-3">Manage Accounts</h5>
+                <a asp-controller="Admin" asp-action="ManageAccounts" class="btn btn-outline-primary w-100">Go</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card-style text-center p-4">
+                <h5 class="card-title mb-3">Manage Recipes</h5>
+                <a asp-controller="Admin" asp-action="ManageRecipes" class="btn btn-outline-primary w-100">Go</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card-style text-center p-4">
+                <h5 class="card-title mb-3">Manage Comments</h5>
+                <a asp-controller="Admin" asp-action="ManageComments" class="btn btn-outline-primary w-100">Go</a>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-4 text-center">
+            <a asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)" class="btn btn-danger w-100">Logout</a>
+        </div>
+    </div>
+</div>

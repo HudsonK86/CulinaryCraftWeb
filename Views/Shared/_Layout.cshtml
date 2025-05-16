@@ -29,10 +29,18 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                         </li>
                         <li class="nav-item ms-auto">
+                            @using System.Security.Claims
                             @{
-                                var userName = TempData["UserName"] as string;
-                                var profileImage = TempData["ProfileImage"] as string ?? "/Images/default-profile.jpg";
-                                var userRole = TempData["UserRole"] as string ?? "user";
+                                var userName = User.Identity?.Name;
+                                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                                var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+                                var profileImage = User.FindFirst("ProfileImage")?.Value;
+
+                                // If the profileImage does not start with '/' or 'http', prepend the Images folder path
+                                if (!string.IsNullOrEmpty(profileImage) && !profileImage.StartsWith("/") && !profileImage.StartsWith("http"))
+                                {
+                                    profileImage = "/Images/" + profileImage;
+                                }
                             }
                             @if (!string.IsNullOrEmpty(userName))
                             {
@@ -42,26 +50,31 @@
                                         <span class="ms-2">@userName</span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                                        @if (userRole == "admin")
-                                        {
-                                            <li><a class="dropdown-item" asp-controller="Admin" asp-action="ManageUsers">Manage Users</a></li>
-                                            <li><a class="dropdown-item" asp-controller="Admin" asp-action="ManageRecipes">Manage Recipes</a></li>
-                                            <li><a class="dropdown-item" asp-controller="Admin" asp-action="ManageActivities">Manage Activities</a></li>
-                                        }
-                                        else
-                                        {
-                                            <li><a class="dropdown-item" asp-controller="User" asp-action="AccountSettings">Account Settings</a></li>
-                                            <li><a class="dropdown-item" asp-controller="User" asp-action="MyRecipes">My Recipes</a></li>
-                                            <li><a class="dropdown-item" asp-controller="User" asp-action="MyActivities">My Activities</a></li>
-                                        }
+                                        <li>
+                                            @if (userRole == "admin")
+                                            {
+                                                <a class="dropdown-item" asp-controller="Admin" asp-action="AdminDashboard">Dashboard</a>
+                                            }
+                                            else
+                                            {
+                                                <a class="dropdown-item" asp-controller="User" asp-action="UserDashboard">Dashboard</a>
+                                            }
+                                        </li>
                                         <li><hr class="dropdown-divider" /></li>
-                                        <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Logout</a></li>
+                                        <li>
+                                            <a class="dropdown-item"
+                                               asp-controller="Account"
+                                               asp-action="Logout"
+                                               asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)">
+                                               Logout
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             }
                             else
                             {
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)">Login</a>
                             }
                         </li>
                     </ul>

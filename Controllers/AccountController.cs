@@ -3,6 +3,11 @@ using CulinaryCraftWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 
 namespace CulinaryCraftWeb.Controllers
 {
@@ -16,29 +21,51 @@ namespace CulinaryCraftWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Login(string returnUrl = null)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
         [HttpPost]
-        public IActionResult Login(string userId, string password)
+        public async Task<IActionResult> Login(string userId, string password, string returnUrl = null)
         {
-            var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
 
-            if (user != null && BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
+            if (user != null)
             {
-                // Check if the user has a profile image; if not, use the default image
-                TempData["UserName"] = user.Name;
-                TempData["ProfileImage"] = string.IsNullOrEmpty(user.ProfileImage) 
-                    ? "/Images/default-profile.jpg" 
-                    : user.ProfileImage;
+                if (user.Status != "active")
+                {
+                    ModelState.AddModelError("", "Your account is blocked. Please contact the administrator for assistance.");
+                    return View();
+                }
 
-                // Set success message for login
-                TempData["SuccessMessage"] = "Login successful! Welcome, " + user.Name + ".";
+                if (BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
+                {
+                    TempData["SuccessMessage"] = "Login successful! Welcome, " + user.Name + ".";
 
-                // Redirect to Home page after successful login
-                return RedirectToAction("Index", "Home");
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name, user.Name),
+                        new Claim(ClaimTypes.NameIdentifier, user.Id),
+                        new Claim(ClaimTypes.Role, user.Role == "admin" ? "admin" : "user"),
+                        new Claim("ProfileImage", user.ProfileImage)
+                    };
+
+                    var claimsIdentity = new ClaimsIdentity(claims, "MyCookieAuth");
+                    var authProperties = new AuthenticationProperties
+                    {
+                        IsPersistent = true
+                    };
+
+                    await HttpContext.SignInAsync("MyCookieAuth", new ClaimsPrincipal(claimsIdentity), authProperties);
+
+                    // Use the helper to check if returnUrl is allowed
+                    if (IsReturnUrlAllowed(returnUrl))
+                        return Redirect(returnUrl);
+
+                    return RedirectToAction("Index", "Home");
+                }
             }
 
             ModelState.AddModelError("", "Invalid User ID or Password");
@@ -77,7 +104,7 @@ namespace CulinaryCraftWeb.Controllers
                     Name = model.Name,
                     Email = model.Email,
                     PasswordHash = BCrypt.Net.BCrypt.HashPassword(model.Password), // Hash the password
-                    ProfileImage = null, // Default profile image
+                    ProfileImage = "default-profile.jpg", // Default profile image
                     RegisteredDate = DateTime.Now,
                     Status = "active",
                     Role = "user"
@@ -90,7 +117,7 @@ namespace CulinaryCraftWeb.Controllers
                 TempData["SuccessMessage"] = "Your account has been created successfully.";
 
                 // Redirect to the login page
-                return RedirectToAction("Login");
+                return RedirectToAction("Login", "Account", new { returnUrl = Request.Path + Request.QueryString });
             }
 
             return View(model);
@@ -135,14 +162,34 @@ namespace CulinaryCraftWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout(string returnUrl = null)
         {
-            // Clear TempData and any session/cookie if used
-            TempData.Clear();
-            // Optionally, clear authentication cookies or session here
-
+            await HttpContext.SignOutAsync("MyCookieAuth");
             TempData["SuccessMessage"] = "You have been logged out successfully.";
+
+            // Use the helper to check if returnUrl is allowed
+            if (IsReturnUrlAllowed(returnUrl))
+                return Redirect(returnUrl);
+
             return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize]
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
+
+        private bool IsReturnUrlAllowed(string returnUrl)
+        {
+            if (string.IsNullOrEmpty(returnUrl) || !Url.IsLocalUrl(returnUrl))
+                return false;
+
+            // List of pages you want to ignore as returnUrl
+            var ignoredPaths = new[] { "/Account/Register", "/Account/ForgotPassword" };
+
+            // You can add more ignored paths if needed
+            return !ignoredPaths.Any(path => returnUrl.StartsWith(path, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

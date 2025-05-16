@@ -29,6 +29,15 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
+// Add authentication services
+builder.Services.AddAuthentication("MyCookieAuth")
+    .AddCookie("MyCookieAuth", options =>
+    {
+        options.LoginPath = "/Account/Login";
+        options.LogoutPath = "/Account/Logout";
+    });
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -44,7 +53,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
+app.UseAuthentication(); // This must come BEFORE UseAuthorization
+app.UseAuthorization(); // Add this line to enable authorization
 
 app.MapControllerRoute(
     name: "default",

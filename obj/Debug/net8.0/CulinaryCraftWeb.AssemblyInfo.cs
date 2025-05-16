@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CulinaryCraftWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55153dcb875eef4e2888aef91202bc3c20cacdc6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+418ea6fb20f5222d4a3c10d777a8abac1ca22b36")]
 [assembly: System.Reflection.AssemblyProductAttribute("CulinaryCraftWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CulinaryCraftWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
