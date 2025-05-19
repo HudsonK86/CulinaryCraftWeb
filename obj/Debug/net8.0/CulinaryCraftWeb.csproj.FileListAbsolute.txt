@@ -368,3 +368,6 @@ C:/Users/User/Desktop/PersonalInfo/APU/Sem4/WAPP/Projects/CulinaryCraft/Culinary
 C:/Users/User/Desktop/PersonalInfo/APU/Sem4/WAPP/Projects/CulinaryCraft/CulinaryCraftWeb/CulinaryCraftWeb/obj/Debug/net8.0/CulinaryCraftWeb.pdb
 C:/Users/User/Desktop/PersonalInfo/APU/Sem4/WAPP/Projects/CulinaryCraft/CulinaryCraftWeb/CulinaryCraftWeb/obj/Debug/net8.0/CulinaryCraftWeb.genruntimeconfig.cache
 C:/Users/User/Desktop/PersonalInfo/APU/Sem4/WAPP/Projects/CulinaryCraft/CulinaryCraftWeb/CulinaryCraftWeb/obj/Debug/net8.0/ref/CulinaryCraftWeb.dll
+C:\Users\User\Desktop\PersonalInfo\APU\Sem4\WAPP\Projects\CulinaryCraft\CulinaryCraftWeb\CulinaryCraftWeb\obj\Debug\net8.0\CulinaryCraftWeb.dll
+C:\Users\User\Desktop\PersonalInfo\APU\Sem4\WAPP\Projects\CulinaryCraft\CulinaryCraftWeb\CulinaryCraftWeb\obj\Debug\net8.0\refint\CulinaryCraftWeb.dll
+C:\Users\User\Desktop\PersonalInfo\APU\Sem4\WAPP\Projects\CulinaryCraft\CulinaryCraftWeb\CulinaryCraftWeb\obj\Debug\net8.0\CulinaryCraftWeb.pdb
