@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "x55T9HHtICD+QAHxFY2/KBaNyS2eHZ3eC9drCP/9k28=",
+  "Hash": "tKl0i25z0XZDeCd1P5aEJzZ7iXTKUOSxdEIM6xqnHtE=",
   "Source": "CulinaryCraftWeb",
   "BasePath": "_content/CulinaryCraftWeb",
   "Mode": "Default",
@@ -224,6 +224,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\luong_1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\luong_3.5x4.5.jpg",
+      "SourceId": "CulinaryCraftWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\",
+      "BasePath": "_content/CulinaryCraftWeb",
+      "RelativePath": "Images/luong_3.5x4.5.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\luong_3.5x4.5.jpg"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\luong_484860071_2721061984749244_8864235587511237719_n.jpg",
