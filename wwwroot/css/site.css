@@ -107,3 +107,13 @@ h2, .mb-4 {
     font-weight: 600;
 }
 
+/* Highlight sidebar nav-link on hover and active */
+.sidebar .nav-link:hover,
+.sidebar .nav-link:focus,
+.sidebar .nav-link.active {
+    background-color: #e9ecef;
+    color: #1b6ec2;
+    border-radius: 0.375rem;
+    transition: background 0.2s, color 0.2s;
+}
+

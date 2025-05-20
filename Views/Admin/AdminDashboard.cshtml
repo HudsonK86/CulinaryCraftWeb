@@ -5,52 +5,27 @@
 
 @section SidebarMenu {
     <li class="nav-item">
-        <a class="nav-link" asp-controller="Admin" asp-action="ManageAccounts">Manage Accounts</a>
+        <a class="nav-link" href="#" onclick="loadDashboardContent('@Url.Action("ManageUsers", "Admin")'); return false;">Manage Users</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" asp-controller="Admin" asp-action="ManageRecipes">Manage Recipes</a>
+        <a class="nav-link" href="#" onclick="loadDashboardContent('@Url.Action("ManageRecipes", "Admin")'); return false;">Manage Recipes</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" asp-controller="Admin" asp-action="ManageComments">Manage Comments</a>
+        <a class="nav-link" href="#" onclick="loadDashboardContent('@Url.Action("ManageComments", "Admin")'); return false;">Manage Comments</a>
     </li>
     <li class="nav-item mt-3">
         <a class="nav-link text-danger" asp-controller="Account" asp-action="Logout">Logout</a>
     </li>
 }
 
-<h2>@ViewData["Title"]</h2>
-<p>Welcome to the Admin Dashboard. Select a function from the left.</p>
-
-<div class="container py-5">
-    <div class="row justify-content-center mb-4">
-        <div class="col-md-8 text-center">
-            <h1 class="display-5 fw-bold">Admin Dashboard</h1>
-            <p class="lead">Manage the platform</p>
-        </div>
-    </div>
-    <div class="row g-4">
-        <div class="col-md-4">
-            <div class="card-style text-center p-4">
-                <h5 class="card-title mb-3">Manage Accounts</h5>
-                <a asp-controller="Admin" asp-action="ManageAccounts" class="btn btn-outline-primary w-100">Go</a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card-style text-center p-4">
-                <h5 class="card-title mb-3">Manage Recipes</h5>
-                <a asp-controller="Admin" asp-action="ManageRecipes" class="btn btn-outline-primary w-100">Go</a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card-style text-center p-4">
-                <h5 class="card-title mb-3">Manage Comments</h5>
-                <a asp-controller="Admin" asp-action="ManageComments" class="btn btn-outline-primary w-100">Go</a>
-            </div>
-        </div>
-    </div>
-    <div class="row justify-content-center mt-4">
-        <div class="col-md-4 text-center">
-            <a asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)" class="btn btn-danger w-100">Logout</a>
-        </div>
-    </div>
+<div id="dashboard-content">
+    @* Optionally load a default partial, or leave empty *@
 </div>
+
+@section Scripts {
+    <script>
+        function loadDashboardContent(url) {
+            $("#dashboard-content").load(url);
+        }
+    </script>
+}

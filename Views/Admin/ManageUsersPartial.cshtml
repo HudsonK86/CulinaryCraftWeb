@@ -1,0 +1,100 @@
+@model List<CulinaryCraftWeb.Data.User>
+@{
+    var currentPage = ViewBag.CurrentPage as int? ?? 1;
+    var totalPages = ViewBag.TotalPages as int? ?? 1;
+    var search = ViewBag.Search as string ?? "";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Manage Users</h3>
+    <form id="userSearchForm" class="d-flex" style="max-width:300px;">
+        <input type="text" name="search" class="form-control form-control-sm me-2" placeholder="Search..." value="@search" />
+        <button type="submit" class="btn btn-sm btn-primary">Search</button>
+    </form>
+</div>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Registered Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr data-user-id="@user.Id">
+            <td>@user.Id</td>
+            <td>@user.Name</td>
+            <td>@user.Email</td>
+            <td>
+                <span class="badge @(user.Status == "active" ? "bg-success" : "bg-secondary")">@user.Status</span>
+            </td>
+            <td>@user.RegisteredDate.ToShortDateString()</td>
+            <td class="text-end">
+                <button class="btn btn-sm btn-danger btn-delete-user">Delete</button>
+                <button class="btn btn-sm btn-warning btn-toggle-status">
+                    @(user.Status == "active" ? "Inactive" : "Active")
+                </button>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-between align-items-center">
+    <div>
+        Page @currentPage of @totalPages
+    </div>
+    <div>
+        <button class="btn btn-sm btn-outline-primary me-2" id="prevPage" @(currentPage <= 1 ? "disabled" : "")>Back</button>
+        <button class="btn btn-sm btn-outline-primary" id="nextPage" @(currentPage >= totalPages ? "disabled" : "")>Next</button>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    // Paging (event delegation)
+    $(document).on("click", "#prevPage", function() {
+        var page = @currentPage - 1;
+        var search = $("input[name='search']").val();
+        loadDashboardContent('@Url.Action("ManageUsers", "Admin")' + '?page=' + page + '&search=' + encodeURIComponent(search));
+    });
+    $(document).on("click", "#nextPage", function() {
+        var page = @currentPage + 1;
+        var search = $("input[name='search']").val();
+        loadDashboardContent('@Url.Action("ManageUsers", "Admin")' + '?page=' + page + '&search=' + encodeURIComponent(search));
+    });
+
+    // Search
+    $(document).on("submit", "#userSearchForm", function(e) {
+        e.preventDefault();
+        var search = $("input[name='search']").val();
+        loadDashboardContent('@Url.Action("ManageUsers", "Admin")' + '?search=' + encodeURIComponent(search));
+    });
+
+    // Delete
+    $(document).on("click", ".btn-delete-user", function() {
+        var row = $(this).closest("tr");
+        var userId = row.data("user-id");
+        if (confirm("Are you sure you want to delete this user?")) {
+            $.post('@Url.Action("DeleteUser", "Admin")', { id: userId }, function() {
+                loadDashboardContent('@Url.Action("ManageUsers", "Admin")');
+            });
+        }
+    });
+
+    // Toggle Status
+    $(document).on("click", ".btn-toggle-status", function() {
+        var row = $(this).closest("tr");
+        var userId = row.data("user-id");
+        $.post('@Url.Action("ToggleUserStatus", "Admin")', { id: userId }, function() {
+            loadDashboardContent('@Url.Action("ManageUsers", "Admin")');
+        });
+    });
+</script>
+}

@@ -23,13 +23,24 @@
 
 
 <div id="dashboard-content">
-    @await Html.PartialAsync("ChangeProfileImagePartial")
+    @if (TempData["ShowPartial"] as string == "ChangePassword")
+    {
+        @await Html.PartialAsync("ChangePasswordPartial", new CulinaryCraftWeb.Models.ChangePasswordViewModel())
+    }
+    else
+    {
+        @await Html.PartialAsync("ChangeProfileImagePartial")
+    }
 </div>
 
 @section Scripts {
     <script>
+        function loadDashboardContent(url) {
+            $("#dashboard-content").load(url);
+        }
+
         $(function () {
-            // AJAX form submit for profile image upload
+            // AJAX for Change Profile Image
             $(document).on("submit", "#profileImageForm", function (e) {
                 e.preventDefault();
                 var formData = new FormData(this);
@@ -39,6 +50,20 @@
                     data: formData,
                     processData: false,
                     contentType: false,
+                    success: function (result) {
+                        $("#dashboard-content").html(result);
+                    }
+                });
+            });
+
+            // AJAX for Change Password
+            $(document).on("submit", "#changePasswordForm", function (e) {
+                e.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: '@Url.Action("ChangePassword", "User")',
+                    type: 'POST',
+                    data: formData,
                     success: function (result) {
                         $("#dashboard-content").html(result);
                     }
