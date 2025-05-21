@@ -5,44 +5,40 @@
       "PackagePath": "staticwebassets\\CulinaryCraftWeb.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\Chinese.png",
-      "PackagePath": "staticwebassets\\Images\\Chinese.png"
+      "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\Cuisines\\Chinese\\Chinese.png",
+      "PackagePath": "staticwebassets\\Images\\Cuisines\\Chinese\\Chinese.png"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\Indian.png",
-      "PackagePath": "staticwebassets\\Images\\Indian.png"
+      "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\Cuisines\\Indian\\Indian.png",
+      "PackagePath": "staticwebassets\\Images\\Cuisines\\Indian\\Indian.png"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\Japanese.png",
-      "PackagePath": "staticwebassets\\Images\\Japanese.png"
+      "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\Cuisines\\Japanese\\Japanese.png",
+      "PackagePath": "staticwebassets\\Images\\Cuisines\\Japanese\\Japanese.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\Cuisines\\MiddleEast\\MiddleEast.png",
+      "PackagePath": "staticwebassets\\Images\\Cuisines\\MiddleEast\\MiddleEast.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\Cuisines\\Vietnamese\\Vietnamese.png",
+      "PackagePath": "staticwebassets\\Images\\Cuisines\\Vietnamese\\Vietnamese.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\Cuisines\\Western\\Western.png",
+      "PackagePath": "staticwebassets\\Images\\Cuisines\\Western\\Western.png"
     },
     {
       "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\Logo.png",
       "PackagePath": "staticwebassets\\Images\\Logo.png"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\Logo1.png",
-      "PackagePath": "staticwebassets\\Images\\Logo1.png"
+      "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\ProfileImages\\default-profile.jpg",
+      "PackagePath": "staticwebassets\\Images\\ProfileImages\\default-profile.jpg"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\MiddleEast.png",
-      "PackagePath": "staticwebassets\\Images\\MiddleEast.png"
-    },
-    {
-      "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\Vietnamese.png",
-      "PackagePath": "staticwebassets\\Images\\Vietnamese.png"
-    },
-    {
-      "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\Western.png",
-      "PackagePath": "staticwebassets\\Images\\Western.png"
-    },
-    {
-      "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\default-profile.jpg",
-      "PackagePath": "staticwebassets\\Images\\default-profile.jpg"
-    },
-    {
-      "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\luong_2.jpg",
-      "PackagePath": "staticwebassets\\Images\\luong_2.jpg"
+      "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\Images\\ProfileImages\\luong_2.jpg",
+      "PackagePath": "staticwebassets\\Images\\ProfileImages\\luong_2.jpg"
     },
     {
       "Id": "C:\\Users\\User\\Desktop\\PersonalInfo\\APU\\Sem4\\WAPP\\Projects\\CulinaryCraft\\CulinaryCraftWeb\\CulinaryCraftWeb\\wwwroot\\css\\site.css",

@@ -18,7 +18,20 @@ namespace CulinaryCraftWeb.Controllers
 
         public IActionResult AdminDashboard()
         {
-            return View();
+            var usersQuery = _context.Users
+                .Where(u => u.Role != "admin");
+
+            var totalUsers = usersQuery.Count();
+            var users = usersQuery
+                .OrderBy(u => u.Name)
+                .Take(PageSize)
+                .ToList();
+
+            ViewBag.CurrentPage = 1;
+            ViewBag.TotalPages = (int)Math.Ceiling(totalUsers / (double)PageSize);
+            ViewBag.Search = "";
+
+            return View(users);
         }
 
         [HttpGet]

@@ -51,21 +51,24 @@
         Page @currentPage of @totalPages
     </div>
     <div>
-        <button class="btn btn-sm btn-outline-primary me-2" id="prevPage" @(currentPage <= 1 ? "disabled" : "")>Back</button>
-        <button class="btn btn-sm btn-outline-primary" id="nextPage" @(currentPage >= totalPages ? "disabled" : "")>Next</button>
+        <button class="btn btn-sm btn-outline-primary me-2" id="prevPage"
+                data-current="@currentPage" data-total="@totalPages"
+                @(currentPage <= 1 ? "disabled" : "")>Back</button>
+        <button class="btn btn-sm btn-outline-primary" id="nextPage"
+                data-current="@currentPage" data-total="@totalPages"
+                @(currentPage >= totalPages ? "disabled" : "")>Next</button>
     </div>
 </div>
 
-@section Scripts {
 <script>
     // Paging (event delegation)
     $(document).on("click", "#prevPage", function() {
-        var page = @currentPage - 1;
+        var page = parseInt($(this).data("current")) - 1;
         var search = $("input[name='search']").val();
         loadDashboardContent('@Url.Action("ManageUsers", "Admin")' + '?page=' + page + '&search=' + encodeURIComponent(search));
     });
     $(document).on("click", "#nextPage", function() {
-        var page = @currentPage + 1;
+        var page = parseInt($(this).data("current")) + 1;
         var search = $("input[name='search']").val();
         loadDashboardContent('@Url.Action("ManageUsers", "Admin")' + '?page=' + page + '&search=' + encodeURIComponent(search));
     });
@@ -97,4 +100,3 @@
         });
     });
 </script>
-}

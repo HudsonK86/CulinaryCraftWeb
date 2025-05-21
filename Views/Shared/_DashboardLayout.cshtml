@@ -4,7 +4,7 @@
     var profileImage = User.FindFirst("ProfileImage")?.Value ?? "default-profile.jpg";
     if (!profileImage.StartsWith("/") && !profileImage.StartsWith("http"))
     {
-        profileImage = "/Images/" + profileImage;
+        profileImage = "/Images/ProfileImages/" + profileImage;
     }
 }
 <div class="container-fluid">

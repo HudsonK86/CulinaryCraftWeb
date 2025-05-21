@@ -39,8 +39,8 @@ namespace CulinaryCraftWeb.Controllers
                 var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
                 var user = _context.Users.FirstOrDefault(u => u.Id == userId);
 
-                // Save new image
-                var uploads = Path.Combine(_env.WebRootPath, "Images");
+                // Save new image in Images/ProfileImages/
+                var uploads = Path.Combine(_env.WebRootPath, "Images", "ProfileImages");
                 var fileName = $"{userId}_{Path.GetFileName(profileImage.FileName)}";
                 var filePath = Path.Combine(uploads, fileName);
 

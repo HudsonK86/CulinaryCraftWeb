@@ -39,7 +39,7 @@
                                 // If the profileImage does not start with '/' or 'http', prepend the Images folder path
                                 if (!string.IsNullOrEmpty(profileImage) && !profileImage.StartsWith("/") && !profileImage.StartsWith("http"))
                                 {
-                                    profileImage = "/Images/" + profileImage;
+                                    profileImage = "/Images/ProfileImages/" + profileImage;
                                 }
                             }
                             @if (!string.IsNullOrEmpty(userName))

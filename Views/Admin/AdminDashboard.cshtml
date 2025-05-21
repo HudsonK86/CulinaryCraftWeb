@@ -19,7 +19,7 @@
 }
 
 <div id="dashboard-content">
-    @* Optionally load a default partial, or leave empty *@
+    @await Html.PartialAsync("ManageUsersPartial", (List<CulinaryCraftWeb.Data.User>)Model)
 </div>
 
 @section Scripts {
