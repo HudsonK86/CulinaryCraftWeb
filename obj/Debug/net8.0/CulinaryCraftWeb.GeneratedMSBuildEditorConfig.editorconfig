@@ -42,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5EYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/User/Desktop/PersonalInfo/APU/Sem4/WAPP/Projects/CulinaryCraft/CulinaryCraftWeb/CulinaryCraftWeb/Views/Admin/ManageRecipesPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlUmVjaXBlc1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/User/Desktop/PersonalInfo/APU/Sem4/WAPP/Projects/CulinaryCraft/CulinaryCraftWeb/CulinaryCraftWeb/Views/Admin/ManageUsersPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlVXNlcnNQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -54,12 +58,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/User/Desktop/PersonalInfo/APU/Sem4/WAPP/Projects/CulinaryCraft/CulinaryCraftWeb/CulinaryCraftWeb/Views/Home/FeaturedRecipesPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGZWF0dXJlZFJlY2lwZXNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/User/Desktop/PersonalInfo/APU/Sem4/WAPP/Projects/CulinaryCraft/CulinaryCraftWeb/CulinaryCraftWeb/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/User/Desktop/PersonalInfo/APU/Sem4/WAPP/Projects/CulinaryCraft/CulinaryCraftWeb/CulinaryCraftWeb/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Desktop/PersonalInfo/APU/Sem4/WAPP/Projects/CulinaryCraft/CulinaryCraftWeb/CulinaryCraftWeb/Views/Home/Recipes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWNpcGVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Desktop/PersonalInfo/APU/Sem4/WAPP/Projects/CulinaryCraft/CulinaryCraftWeb/CulinaryCraftWeb/Views/Home/Recipes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWNpcGVzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/User/Desktop/PersonalInfo/APU/Sem4/WAPP/Projects/CulinaryCraft/CulinaryCraftWeb/CulinaryCraftWeb/Views/Shared/Error.cshtml]
@@ -80,6 +96,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/User/Desktop/PersonalInfo/APU/Sem4/WAPP/Projects/CulinaryCraft/CulinaryCraftWeb/CulinaryCraftWeb/Views/User/ChangeProfileImagePartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDaGFuZ2VQcm9maWxlSW1hZ2VQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Desktop/PersonalInfo/APU/Sem4/WAPP/Projects/CulinaryCraft/CulinaryCraftWeb/CulinaryCraftWeb/Views/User/MyRecipesPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxNeVJlY2lwZXNQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/User/Desktop/PersonalInfo/APU/Sem4/WAPP/Projects/CulinaryCraft/CulinaryCraftWeb/CulinaryCraftWeb/Views/User/UserDashboard.cshtml]

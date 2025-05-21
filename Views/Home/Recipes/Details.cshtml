@@ -1,0 +1,61 @@
+@model CulinaryCraftWeb.Data.Recipe
+
+@functions {
+    string GetYouTubeEmbedUrl(string url)
+    {
+        if (string.IsNullOrEmpty(url)) return null;
+        var regex = new System.Text.RegularExpressions.Regex(@"(?:youtu\.be/|youtube\.com/(?:watch\?v=|embed/|v/|shorts/))([A-Za-z0-9_\-]{11})");
+        var match = regex.Match(url);
+        if (match.Success)
+        {
+            return $"https://www.youtube.com/embed/{match.Groups[1].Value}";
+        }
+        return null;
+    }
+}
+
+<div class="container py-5">
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <img src="~/Images/@Model.Image" class="card-img-top rounded-top" alt="@Model.Name" />
+                <div class="card-body">
+                    <h2 class="card-title">@Model.Name</h2>
+                    <div class="mb-2 text-muted" style="font-size: 0.95em;">
+                        Cuisine: @Model.Cuisine?.Name<br />
+                        Posted by: @Model.Created_By<br />
+                        Posted at: @Model.Created_At.ToString("yyyy-MM-dd HH:mm")
+                    </div>
+                </div>
+            </div>
+            @* Embed YouTube video if link exists *@
+            @{
+                var embedUrl = GetYouTubeEmbedUrl(Model.Youtube_Link);
+                if (!string.IsNullOrEmpty(embedUrl))
+                {
+                    <div class="mt-4">
+                        <h5 class="mb-2">Recipe Video</h5>
+                        <div class="ratio ratio-16x9">
+                            <iframe src="@embedUrl" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h4 class="mb-3">Recipe Content</h4>
+                    <div style="white-space: pre-line; font-weight: normal;">
+                        @Html.Raw(Model.Content.Replace("\r\n", "<br />").Replace("\n", "<br />"))
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 mt-3">
+            <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">&larr; Back to Home</a>
+        </div>
+    </div>
+</div>

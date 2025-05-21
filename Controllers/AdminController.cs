@@ -1,6 +1,7 @@
 using CulinaryCraftWeb.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace CulinaryCraftWeb.Controllers
@@ -86,10 +87,67 @@ namespace CulinaryCraftWeb.Controllers
             return Json(new { success = true });
         }
 
-        public IActionResult ManageRecipes()
+        [HttpGet]
+        public IActionResult ManageRecipes(int page = 1, string search = "")
         {
-            // You can pass a list of recipes from the database here
-            return PartialView("ManageRecipesPartial");
+            int pageSize = 10;
+            IQueryable<Recipe> query = _context.Recipes.Include(r => r.Cuisine);
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query = query.Where(r => r.Name.Contains(search) || r.Content.Contains(search));
+            }
+
+            var totalRecipes = query.Count();
+            var totalPages = (int)Math.Ceiling(totalRecipes / (double)pageSize);
+
+            var recipes = query
+                .OrderByDescending(r => r.Created_At)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = totalPages;
+            ViewBag.Search = search;
+
+            return PartialView("~/Views/Admin/ManageRecipesPartial.cshtml", recipes);
+        }
+
+        [HttpPost]
+        public IActionResult ApproveRecipe(int id)
+        {
+            var recipe = _context.Recipes.Find(id);
+            if (recipe != null && recipe.Status == "pending")
+            {
+                recipe.Status = "approved";
+                _context.SaveChanges();
+            }
+            return Ok();
+        }
+
+        [HttpPost]
+        public IActionResult RejectRecipe(int id)
+        {
+            var recipe = _context.Recipes.Find(id);
+            if (recipe != null && recipe.Status == "pending")
+            {
+                _context.Recipes.Remove(recipe);
+                _context.SaveChanges();
+            }
+            return Ok();
+        }
+
+        [HttpPost]
+        public IActionResult DeleteRecipe(int id)
+        {
+            var recipe = _context.Recipes.Find(id);
+            if (recipe != null)
+            {
+                _context.Recipes.Remove(recipe);
+                _context.SaveChanges();
+            }
+            return Ok();
         }
     }
 }

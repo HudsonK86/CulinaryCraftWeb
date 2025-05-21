@@ -1,0 +1,52 @@
+@model CulinaryCraftWeb.Models.PostRecipeViewModel
+@{
+    ViewData["Title"] = "Post a Recipe";
+    var cuisines = ViewBag.Cuisines as List<CulinaryCraftWeb.Data.Cuisine>;
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6 text-center">
+            <img src="~/Images/Logo.png" class="img-fluid mb-3" alt="Logo" style="max-width: 80px;" />
+            <h2 class="mb-4">Post a Recipe</h2>
+        </div>
+    </div>
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Recipe Name</label>
+            <input asp-for="Name" class="form-control" required />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Cuisine_Id" class="form-label">Cuisine</label>
+            <select asp-for="Cuisine_Id" class="form-select" required>
+                <option value="">-- Select Cuisine --</option>
+                @foreach (var cuisine in cuisines)
+                {
+                    <option value="@cuisine.Id">@cuisine.Name</option>
+                }
+            </select>
+            <span asp-validation-for="Cuisine_Id" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Image</label>
+            <input type="file" asp-for="ImageFile" class="form-control" accept="image/*" required />
+            <span asp-validation-for="ImageFile" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Content" class="form-label">Content</label>
+            <textarea asp-for="Content" class="form-control" rows="5" required></textarea>
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Youtube_Link" class="form-label">YouTube Link</label>
+            <input asp-for="Youtube_Link" class="form-control" />
+            <span asp-validation-for="Youtube_Link" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Recipe</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,112 @@
+@model List<CulinaryCraftWeb.Data.Recipe>
+@{
+    var currentPage = ViewBag.CurrentPage as int? ?? 1;
+    var totalPages = ViewBag.TotalPages as int? ?? 1;
+    var search = ViewBag.Search as string ?? "";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Manage Recipes</h3>
+    <form id="recipeSearchForm" class="d-flex" style="max-width:300px;">
+        <input type="text" name="search" class="form-control form-control-sm me-2" placeholder="Search..." value="@search" />
+        <button type="submit" class="btn btn-sm btn-primary">Search</button>
+    </form>
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Created By</th>
+            <th>Created At</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var recipe in Model)
+    {
+        <tr data-recipe-id="@recipe.Id">
+            <td>
+                @((recipe.Name?.Length > 25 ? recipe.Name.Substring(0, 25) + "..." : recipe.Name))
+            </td>
+            <td>
+                <span class="badge @(recipe.Status == "approved" ? "bg-success" : recipe.Status == "pending" ? "bg-warning text-dark" : "bg-secondary")">
+                    @recipe.Status
+                </span>
+            </td>
+            <td>@recipe.Created_By</td>
+            <td>@recipe.Created_At.ToString("yyyy-MM-dd HH:mm")</td>
+            <td>
+                <a href="@Url.Action("Details", "Recipes", new { id = recipe.Id })" class="btn btn-sm btn-info" target="_blank">View</a>
+                @if (recipe.Status == "pending")
+                {
+                    <button class="btn btn-sm btn-success btn-approve">Approve</button>
+                    <button class="btn btn-sm btn-danger btn-reject">Reject</button>
+                }
+                else if (recipe.Status == "approved")
+                {
+                    <button class="btn btn-sm btn-danger btn-delete">Delete</button>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<nav aria-label="Recipes Pagination" class="mt-4">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+            <a class="page-link" href="javascript:void(0);" onclick="loadDashboardContent('@Url.Action("ManageRecipes", "Admin")?page=@(currentPage - 1)&search=@search')">Back</a>
+        </li>
+        @for (int i = 1; i <= totalPages; i++)
+        {
+            <li class="page-item @(i == currentPage ? "active" : "")">
+                <a class="page-link" href="javascript:void(0);" onclick="loadDashboardContent('@Url.Action("ManageRecipes", "Admin")?page=@i&search=@search')">@i</a>
+            </li>
+        }
+        <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+            <a class="page-link" href="javascript:void(0);" onclick="loadDashboardContent('@Url.Action("ManageRecipes", "Admin")?page=@(currentPage + 1)&search=@search')">Next</a>
+        </li>
+    </ul>
+</nav>
+
+<script>
+    // Search
+    $(document).on("submit", "#recipeSearchForm", function(e) {
+        e.preventDefault();
+        var search = $("input[name='search']").val();
+        loadDashboardContent('@Url.Action("ManageRecipes", "Admin")' + '?search=' + encodeURIComponent(search));
+    });
+
+    // Approve
+    $(document).on("click", ".btn-approve", function() {
+        var row = $(this).closest("tr");
+        var recipeId = row.data("recipe-id");
+        $.post('@Url.Action("ApproveRecipe", "Admin")', { id: recipeId }, function() {
+            loadDashboardContent('@Url.Action("ManageRecipes", "Admin")');
+        });
+    });
+
+    // Reject
+    $(document).on("click", ".btn-reject", function() {
+        var row = $(this).closest("tr");
+        var recipeId = row.data("recipe-id");
+        if (confirm("Are you sure you want to reject and delete this recipe?")) {
+            $.post('@Url.Action("RejectRecipe", "Admin")', { id: recipeId }, function() {
+                loadDashboardContent('@Url.Action("ManageRecipes", "Admin")');
+            });
+        }
+    });
+
+    // Delete
+    $(document).on("click", ".btn-delete", function() {
+        var row = $(this).closest("tr");
+        var recipeId = row.data("recipe-id");
+        if (confirm("Are you sure you want to delete this recipe?")) {
+            $.post('@Url.Action("DeleteRecipe", "Admin")', { id: recipeId }, function() {
+                loadDashboardContent('@Url.Action("ManageRecipes", "Admin")');
+            });
+        }
+    });
+</script>

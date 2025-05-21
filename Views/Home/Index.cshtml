@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<CulinaryCraftWeb.Data.Cuisine>
+@{
     ViewData["Title"] = "Home";
 }
 
@@ -15,98 +16,37 @@
         </div>
     </div>
 
-    <!-- Cuisines Section -->
-    <h2 class="mb-4">Explore by Cuisine</h2>
-    <div class="row g-4">
-        <div class="col-md-4">
-            <div class="card-style text-center">
-                <img src="~/Images/Western.png" alt="Western Cuisine" />
-                <div class="card-body">
-                    <h5 class="card-title">Western</h5>
-                    <a href="/Recipes?cuisine=Western" class="btn btn-outline-primary">View Recipes</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card-style text-center">
-                <img src="~/Images/Chinese.png" alt="Chinese Cuisine" />
-                <div class="card-body">
-                    <h5 class="card-title">Chinese</h5>
-                    <a href="/Recipes?cuisine=Chinese" class="btn btn-outline-primary">View Recipes</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card-style text-center">
-                <img src="~/Images/Japanese.png" alt="Japanese Cuisine" />
-                <div class="card-body">
-                    <h5 class="card-title">Japanese</h5>
-                    <a href="/Recipes?cuisine=Japanese" class="btn btn-outline-primary">View Recipes</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card-style text-center">
-                <img src="~/Images/Indian.png" alt="Indian Cuisine" />
-                <div class="card-body">
-                    <h5 class="card-title">Indian</h5>
-                    <a href="/Recipes?cuisine=Indian" class="btn btn-outline-primary">View Recipes</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card-style text-center">
-                <img src="~/Images/MiddleEast.png" alt="MiddleEast Cuisine" />
-                <div class="card-body">
-                    <h5 class="card-title">Middle East</h5>
-                    <a href="/Recipes?cuisine=MiddleEast" class="btn btn-outline-primary">View Recipes</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card-style text-center">
-                <img src="~/Images/Vietnamese.png" alt="Vietnamese Cuisine" />
-                <div class="card-body">
-                    <h5 class="card-title">Vietnamese</h5>
-                    <a href="/Recipes?cuisine=Vietnamese" class="btn btn-outline-primary">View Recipes</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    </br></br>
     <!-- Featured Recipes Section -->
-    <h2 class="mb-4">Featured Recipes</h2>
-    <div class="row g-4">
-        <div class="col-md-4">
-            <div class="card-style text-center">
-                <img src="~/Images/Vietnamese.png" alt="Vietnamese Pho" />
-                <div class="card-body">
-                    <h5 class="card-title">Vietnamese Pho</h5>
-                    <p class="card-text">A traditional Vietnamese soup made with a clear broth, rice noodles, and a variety of vegetables and herbs.</p>
-                    <a href="/Recipes/Details/1" class="btn btn-primary">View Recipe</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card-style text-center">
-                <img src="~/Images/ClassicSpaghetti.png" alt="Classic Spaghetti" />
-                <div class="card-body">
-                    <h5 class="card-title">Classic Spaghetti</h5>
-                    <p class="card-text">A classic Italian dish made with a tomato-based sauce, spaghetti, and various toppings.</p>
-                    <a href="/Recipes/Details/2" class="btn btn-primary">View Recipe</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card-style text-center">
-                <img src="~/Images/BeefStirFry.png" alt="Beef Stir Fry" />
-                <div class="card-body">
-                    <h5 class="card-title">Beef Stir Fry</h5>
-                    <p class="card-text">A quick and easy stir-fry made with beef, vegetables, and a savory sauce.</p>
-                    <a href="/Recipes/Details/3" class="btn btn-primary">View Recipe</a>
-                </div>
-            </div>
-        </div>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Featured Recipes</h2>
+        <form id="searchForm" class="d-flex" onsubmit="searchRecipes(); return false;" style="max-width: 350px;">
+            <input id="searchInput" class="form-control me-2" type="search" placeholder="Search recipes..." aria-label="Search" />
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
     </div>
+    <div id="featured-recipes-section"></div>
 </div>
+
+@section Scripts {
+<script>
+function loadFeaturedRecipes(page, search) {
+    $.get('@Url.Action("FeaturedRecipes", "Home")', { page: page, search: search || "" }, function (data) {
+        $('#featured-recipes-section').html(data);
+    });
+}
+
+function searchRecipes() {
+    var search = $('#searchInput').val();
+    loadFeaturedRecipes(1, search);
+}
+
+$(document).ready(function() {
+    loadFeaturedRecipes(1);
+    $('#searchForm').on('submit', function(e) {
+        e.preventDefault();
+        searchRecipes();
+    });
+});
+</script>
+}
 

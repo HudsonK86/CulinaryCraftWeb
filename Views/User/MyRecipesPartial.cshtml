@@ -1,0 +1,55 @@
+@model List<CulinaryCraftWeb.Data.Recipe>
+@{
+    var currentPage = ViewBag.CurrentPage as int? ?? 1;
+    var totalPages = ViewBag.TotalPages as int? ?? 1;
+}
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">You haven't posted any recipes yet.</div>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Created At</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var recipe in Model)
+        {
+            <tr>
+                <td>@recipe.Name</td>
+                <td>
+                    <span class="badge @(recipe.Status == "approved" ? "bg-success" : "bg-secondary")">@recipe.Status</span>
+                </td>
+                <td>@recipe.Created_At.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>
+                    <a href="@Url.Action("Details", "Recipes", new { id = recipe.Id })" class="btn btn-sm btn-primary" target="_blank">View</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <nav aria-label="My Recipes Pagination" class="mt-4">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                <a class="page-link" href="javascript:void(0);" onclick="loadMyRecipes(@(currentPage - 1))">Back</a>
+            </li>
+            @for (int i = 1; i <= totalPages; i++)
+            {
+                <li class="page-item @(i == currentPage ? "active" : "")">
+                    <a class="page-link" href="javascript:void(0);" onclick="loadMyRecipes(@i)">@i</a>
+                </li>
+            }
+            <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                <a class="page-link" href="javascript:void(0);" onclick="loadMyRecipes(@(currentPage + 1))">Next</a>
+            </li>
+        </ul>
+    </nav>
+}

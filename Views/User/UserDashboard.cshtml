@@ -13,9 +13,6 @@
     <li class="nav-item">
         <a class="nav-link" href="#" onclick="loadDashboardContent('@Url.Action("MyRecipes", "Recipes")'); return false;">My Recipes</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#" onclick="loadDashboardContent('@Url.Action("Activities", "User")'); return false;">Activities</a>
-    </li>
     <li class="nav-item mt-3">
         <a class="nav-link text-danger" asp-controller="Account" asp-action="Logout">Logout</a>
     </li>
@@ -70,5 +67,9 @@
                 });
             });
         });
+
+        function loadMyRecipes(page) {
+            $("#dashboard-content").load('@Url.Action("MyRecipes", "Recipes")' + '?page=' + page);
+        }
     </script>
 }
